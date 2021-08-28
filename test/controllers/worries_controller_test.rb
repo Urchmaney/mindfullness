@@ -14,7 +14,10 @@ class WorriesControllerTest < ActionDispatch::IntegrationTest
   test 'should create worry' do
     assert_difference('Worry.count') do
       post user_worries_url(@user),
-           params: { worry: { description: @worry.description, recording_url: @worry.recording_url, user_id: 1 } }, as: :json
+           params: {
+             worry: { description: @worry.description, recording_url: @worry.recording_url, user_id: 1 }
+           },
+           as: :json
     end
 
     assert_response 201
