@@ -1,5 +1,5 @@
 class WorriesController < ApplicationController
-  before_action :set_worry, only: [:show, :update, :destroy]
+  before_action :set_worry, only: %i[show update destroy]
   before_action :set_user, only: %I[index]
 
   # GET /worries
@@ -38,17 +38,18 @@ class WorriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_worry
-      @worry = Worry.find(params[:id])
-    end
 
-    def set_user
-      @user = User.find(params[:user_id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_worry
+    @worry = Worry.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def worry_params
-      params.require(:worry).permit(:description, :recording_url, :user_id)
-    end
+  def set_user
+    @user = User.find(params[:user_id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def worry_params
+    params.require(:worry).permit(:description, :recording_url, :user_id)
+  end
 end

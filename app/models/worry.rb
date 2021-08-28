@@ -7,6 +7,6 @@ class Worry < ApplicationRecord
   private
 
   def set_nil_title
-    self.title = 'Untitled' if self.title.nil?
+    self.title = 'Untitled' if title.nil?
   end
 end
