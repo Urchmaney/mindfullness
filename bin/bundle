@@ -8,6 +8,8 @@
 # this file is here to facilitate running it.
 #
 
+# rubocop:disable all
+
 require 'rubygems'
 
 m = Module.new do
