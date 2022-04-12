@@ -1,0 +1,26 @@
+FROM ruby:3.1
+
+RUN apt-get update -qq && apt-get install -y nodejs postgresql-client git
+
+RUN mkdir mindfullness
+WORKDIR /mindfullness
+
+COPY Gemfile Gemfile.lock ./
+
+RUN gem install bundler
+
+RUN gem install rails
+
+COPY . .
+
+COPY docker-dev-entrypoint.sh /usr/bin/
+
+RUN chmod +x /usr/bin/docker-dev-entrypoint.sh
+
+ENTRYPOINT ["docker-dev-entrypoint.sh"]
+
+RUN bundle install
+
+EXPOSE 3000
+
+CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]

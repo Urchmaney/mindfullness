@@ -17,13 +17,16 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  host: <%= ENV['POSTGRES_HOST'] %>
+  username: <%= ENV.fetch("POSTGRES_USERNAME") { "root" } %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
-  database: mindfullness_development
+  database: <%= ENV['POSTGRES_DB_NAME'] %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
