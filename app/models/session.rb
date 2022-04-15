@@ -1,0 +1,4 @@
+class Session < ApplicationRecord
+
+end
+  

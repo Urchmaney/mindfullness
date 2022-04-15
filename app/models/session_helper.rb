@@ -1,0 +1,3 @@
+class SessionHelper < ApplicationRecord
+
+end
