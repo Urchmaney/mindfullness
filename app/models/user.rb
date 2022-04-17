@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   def assign_fullname
     return unless full_name.blank?
-    
+
     self.full_name = Faker::Name.name
-  end  
+  end
 end
